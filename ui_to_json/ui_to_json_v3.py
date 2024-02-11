@@ -114,7 +114,7 @@ def get_bboxes(image_p: Path) -> List[Tuple[str, Tuple[int, int, int, int]]]:
     """
     return: list of gui elements' classes with their bounding boxes
     """
-    result = model.predict(image_p.__str__(), conf=0.02, iou=0.1)[0]
+    result = gui_model.predict(image_p.__str__(), conf=0.02, iou=0.1)[0]
 
     res = [(result.names[int(cls_int)], (x1, y1, x2, y2)) for cls_int, (x1, y1, x2, y2) in zip(result.boxes.cls, result.boxes.xyxy)]
 
